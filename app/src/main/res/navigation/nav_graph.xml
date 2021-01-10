@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/popularMovies">
+
+    <!--fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tmdbclient.views.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_popularMovies"
+            app:destination="@id/popularMoviesFragment" />
+        <action
+            android:id="@+id/action_home_to_popularTvShows"
+            app:destination="@id/popularTvShowsFragment" />
+        <action
+            android:id="@+id/action_home_to_popularArtists"
+            app:destination="@id/popularArtistsFragment" />
+    </fragment>-->
+
+    <fragment
+        android:id="@+id/popularMovies"
+        android:name="com.example.tmdbclient.views.fragments.PopularMoviesFragment"
+        android:label="fragment_popular_movies"
+        tools:layout="@layout/fragment_popular_movies" />
+    <fragment
+        android:id="@+id/popularArtists"
+        android:name="com.example.tmdbclient.views.fragments.PopularArtistsFragment"
+        android:label="fragment_popular_artists"
+        tools:layout="@layout/fragment_popular_artists" />
+    <fragment
+        android:id="@+id/popularTvShows"
+        android:name="com.example.tmdbclient.views.fragments.PopularTvShowsFragment"
+        android:label="fragment_popular_tv_shows"
+        tools:layout="@layout/fragment_popular_tv_shows" />
+</navigation>

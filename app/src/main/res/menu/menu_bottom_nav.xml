@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popularMovies"
+        android:icon="@drawable/ic_movies_24dp"
+        android:orderInCategory="1"
+        android:title="Movies" />
+
+    <item
+        android:id="@+id/popularTvShows"
+        android:icon="@drawable/ic_tv_24dp"
+        android:orderInCategory="2"
+        android:title="Tv Shows" />
+
+    <item
+        android:id="@+id/popularArtists"
+        android:icon="@drawable/ic_person_outline_24dp"
+        android:orderInCategory="3"
+        android:title="Artists" />
+
+</menu>
