@@ -1,5 +1,7 @@
 package com.example.tmdbclient.views.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -27,13 +29,24 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment!!.navController)
     }
 
-    companion object {
-        fun switchToNightMode() {
+
+    fun switchToNightMode() {
+        val savedMode: Int =
             if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                AppCompatDelegate.MODE_NIGHT_YES
             } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                AppCompatDelegate.MODE_NIGHT_NO
             }
+        AppCompatDelegate.setDefaultNightMode(savedMode)
+        saveModeInSharedPrefs(savedMode)
+    }
+
+    private fun saveModeInSharedPrefs(savedMode: Int) {
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences("TmdbPreferences", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putInt("SAVED_NIGHT_MODE", savedMode)
+            apply()
         }
     }
 }

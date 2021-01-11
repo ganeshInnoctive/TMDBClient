@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import com.example.tmdbclient.databinding.FragmentCommonBinding
 import com.example.tmdbclient.di.Injector
 import com.example.tmdbclient.viewmodels.artist.ArtistViewModel
 import com.example.tmdbclient.viewmodels.artist.ArtistViewModelFactory
+import com.example.tmdbclient.views.activities.MainActivity
 import com.example.tmdbclient.views.adapters.PopularArtistsAdapter
 import javax.inject.Inject
 
@@ -89,8 +91,20 @@ class PopularArtistsFragment : Fragment(), View.OnClickListener {
             }
 
             R.id.imageViewOverflow -> {
-
+                showOverflowMenu()
             }
         }
+    }
+
+    private fun showOverflowMenu() {
+        PopupMenu(context, binder.imageViewOverflow).apply {
+            menuInflater.inflate(R.menu.menu_overflow, menu)
+            setOnMenuItemClickListener { item ->
+                if (item.itemId == R.id.changeTheme) {
+                    (activity as MainActivity).switchToNightMode()
+                }
+                true
+            }
+        }.show()
     }
 }

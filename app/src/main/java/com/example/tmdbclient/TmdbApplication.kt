@@ -1,6 +1,8 @@
 package com.example.tmdbclient
 
 import android.app.Application
+import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.tmdbclient.di.Injector
 import com.example.tmdbclient.di.artist.ArtistSubComponent
 import com.example.tmdbclient.di.core.*
@@ -13,6 +15,12 @@ class TmdbApplication : Application(), Injector {
 
     override fun onCreate() {
         super.onCreate()
+
+        val sharedPreferences = getSharedPreferences("TmdbPreferences", Context.MODE_PRIVATE)
+        val savedMode = sharedPreferences.getInt("SAVED_NIGHT_MODE", 0)
+
+        AppCompatDelegate.setDefaultNightMode(savedMode)
+
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(applicationContext))
             .networkModule(NetworkModule(BuildConfig.BASE_URL))

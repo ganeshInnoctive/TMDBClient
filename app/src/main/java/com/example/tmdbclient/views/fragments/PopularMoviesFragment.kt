@@ -16,7 +16,7 @@ import com.example.tmdbclient.databinding.FragmentCommonBinding
 import com.example.tmdbclient.di.Injector
 import com.example.tmdbclient.viewmodels.movie.MovieViewModel
 import com.example.tmdbclient.viewmodels.movie.MovieViewModelFactory
-import com.example.tmdbclient.views.activities.MainActivity.Companion.switchToNightMode
+import com.example.tmdbclient.views.activities.MainActivity
 import com.example.tmdbclient.views.adapters.PopularMoviesAdapter
 import javax.inject.Inject
 
@@ -102,22 +102,11 @@ class PopularMoviesFragment : Fragment(), View.OnClickListener {
             menuInflater.inflate(R.menu.menu_overflow, menu)
             setOnMenuItemClickListener { item ->
                 if (item.itemId == R.id.changeTheme) {
-                    switchToNightMode()
+                    dismiss()
+                    (activity as MainActivity).switchToNightMode()
                 }
                 true
             }
         }.show()
     }
-
-    /*private fun switchTheme() {
-        val isNightMode =
-            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-        if (isNightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-        activity?.
-        activity?.recreate()
-    }*/
 }
