@@ -25,7 +25,7 @@
         android:id="@+id/popularMovies"
         android:name="com.example.tmdbclient.views.fragments.PopularMoviesFragment"
         android:label="fragment_popular_movies"
-        tools:layout="@layout/fragment_popular_movies" />
+        tools:layout="@layout/fragment_common" />
     <fragment
         android:id="@+id/popularArtists"
         android:name="com.example.tmdbclient.views.fragments.PopularArtistsFragment"
